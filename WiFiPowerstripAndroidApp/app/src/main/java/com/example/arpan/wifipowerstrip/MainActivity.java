@@ -107,6 +107,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
+        if (mBound) {
+            mService.sendMessage("Sync");
+        }
         IntentFilter filter = new IntentFilter();
         filter.addAction("sync");
         registerReceiver(receiver, filter);
